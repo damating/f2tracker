@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>F2tracker</title>
+   <link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+  </div>
+</div>
+
+<div class="menu">
+  <div class="container">
+    <ul class="nav">
+      <li class="active"><a href="#">Log in</a></li>
+      <li><a href="#">Statistics</a></li>
+      <li><a href="#">Welcome</a></li>
+    </ul>
+  </div>
+</div>
+
+<%= yield %>
+
+<div class="footer">
+  <div class="container">
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Terms</a></li>
+    </ul>
+    <p>© 2015 Paula Grzesiak</p>
+  </div>
+</div>
+</body>
+</html>

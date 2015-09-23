@@ -1,0 +1,148 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html,body {
+  background: #f2f2f2;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+h1, h2, a {
+  font-family: 'Oswald', sans-serif; text-transform: uppercase;
+}
+
+.container {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.header {
+  background: #000 none repeat scroll 0% 0%;
+  min-height: 80px;
+}
+
+/* Menu */
+.menu {
+  background: #152230 none repeat scroll 0% 0%;
+  min-height: 40px;
+}
+
+.menu ul.nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu ul.nav li {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  margin: 0;
+  padding: 0 20px;
+  text-align: center;
+  float: right;
+}
+
+.menu ul.nav li:hover, .menu ul.nav li.active {
+  background: #1a77ff;
+}
+
+.menu ul.nav li a {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.menu ul.nav li a:hover {
+  background: transparent;
+}
+
+/* Main */
+.main {
+  text-align: center;
+  background: transparent url("foosball-video-picture.jpg") no-repeat scroll center center / cover;
+  height: 600px;
+}
+
+.main .container {
+  position: relative;
+  top: 70px;
+}
+
+.main h1 {
+  color: #fff;
+  margin: 0;
+  font-size: 100px;
+}
+
+.main p {
+  color: #fff;
+  margin: 0 0 40px 0;
+  font-size: 18px;
+}
+
+.main .btn {
+  background-color: #1a77ff;
+  color: #fff;
+  font-size: 18px;
+  padding: 8px 30px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 0px;
+}
+
+.main .btn:hover {
+  background: #204D74 none repeat scroll 0% 0%;
+  cursor: pointer;
+  transition: background 0.5s ease 0s;
+}
+
+/* Supporting */
+.supporting {
+  background-color: #177ff; 
+  text-align: center;
+  padding: 50px 0px 80px;
+}
+
+.supporting .col {
+  float: left;
+  width: 32%;
+  padding: 10px;
+}
+
+.supporting h2 {
+  color: #1a77ff; /*152230*/
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.supporting p {
+  margin-bottom: 20px;
+  line-height: 20px;
+  font-size: 13px;
+}
+
+/* Footer */
+.footer {
+  background: #000 none repeat scroll 0% 0%;
+  padding: 40px 0px;
+}
+
+.footer ul {
+  float: left;
+  list-style: outside none none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.footer ul li {
+  color: #fff;
+  display: inline;
+  margin: 0px 40px 0px 0px;
+}
+
+.footer p {
+  color: #e2e2e2;
+  float: right;
+}
