@@ -82,7 +82,8 @@ h1, h2, a {
   font-size: 18px;
 }
 
-.main .btn {
+/* Buttons */
+.main .btn, .login .btn-submit {
   background-color: #1a77ff;
   color: #fff;
   font-size: 18px;
@@ -92,15 +93,20 @@ h1, h2, a {
   border-radius: 0px;
 }
 
-.main .btn:hover {
+.main .btn:hover, .login .btn-submit:hover {
   background: #204D74 none repeat scroll 0% 0%;
   cursor: pointer;
   transition: background 0.5s ease 0s;
 }
 
+.login .btn-submit {
+  border: none;
+  margin: 115px 0 60px 0;
+}
+
 /* Supporting */
 .supporting {
-  background-color: #177ff; /*152230*/
+  background-color: #177ff; 
   text-align: center;
   padding: 50px 0px 80px;
 }
@@ -127,6 +133,7 @@ h1, h2, a {
 .footer {
   background: #000 none repeat scroll 0% 0%;
   padding: 40px 0px;
+  margin: 0px;
 }
 
 .footer ul {
@@ -146,3 +153,23 @@ h1, h2, a {
   color: #e2e2e2;
   float: right;
 }
+
+/* Login */
+form input.form-control {
+    border: 0px none;
+    border-radius: 0px;
+}
+
+input[type="file"] {
+    display: block;
+}
+
+.login h1 {
+  margin: 50px 0 40px 0;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
