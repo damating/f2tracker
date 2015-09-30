@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
     @current_player ||= Player.find(session[:player_id]) if session[:player_id]
   end 
 
+  #redirect logged out players to the login page
   def require_player
     redirect_to '/login' unless current_player
   end

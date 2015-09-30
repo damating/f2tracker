@@ -83,7 +83,9 @@ h1, h2, a {
 }
 
 /* Buttons */
-.main .btn, .login .btn-submit {
+
+
+.main .btn, .login .btn-submit, .index .btn-submit {
   background-color: #1a77ff;
   color: #fff;
   font-size: 18px;
@@ -93,15 +95,18 @@ h1, h2, a {
   border-radius: 0px;
 }
 
-.main .btn:hover, .login .btn-submit:hover {
+.main .btn:hover, .login .btn-submit:hover, .index .btn-submit:hover {
   background: #204D74 none repeat scroll 0% 0%;
   cursor: pointer;
   transition: background 0.5s ease 0s;
 }
 
-.login .btn-submit {
+.login .btn-submit, .index .btn-submit {
   border: none;
-  margin: 115px 0 60px 0;
+  margin: 15px 20px 60px 0px;
+  font-family: "Oswald",sans-serif;
+  text-transform: uppercase;
+  float: left;
 }
 
 /* Supporting */
@@ -164,7 +169,7 @@ input[type="file"] {
     display: block;
 }
 
-.login h1 {
+.login h1, .index h1 {
   margin: 50px 0 40px 0;
   text-align: center;
 }
@@ -172,4 +177,57 @@ input[type="file"] {
 .form-group {
   margin-bottom: 25px;
 }
+
+/* Table */
+
+.index th {
+  border-bottom: 3px solid #1A77FF;
+}
+
+.index td {
+  background: #fff none repeat scroll 0% 0%;
+}
+
+.index th, .index td {
+  padding: 12px 35px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.index .box, .index tr {
+  margin-bottom: 25px;
+}
+
+.box td a {
+  display: block;
+  height: 24px;
+  width: 24px;
+}
+
+.box .icon {
+  padding: 12px 0px;
+}
+ 
+.edit {
+  background-image: url("edit45.png");
+  background-position: center center;
+} 
+
+.delete {
+  background-image: url("rubbish7.png");
+  background-position: center center;
+} 
+
+/*.index h1 {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  text-align: center;
+}*/
+
+/*.index .box {
+    background: #FFF none repeat scroll 0% 0%;
+    padding: 20px 40px 40px;
+    margin: 50px 0;
+    position: relative;
+}*/
 

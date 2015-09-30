@@ -1,10 +1,10 @@
 <div class="login">
   <div class="container">
-      <h1>Add new player</h1>
+      <h1>Edit the profile</h1>
       <%= render 'form' %>
       <% if current_player && current_player.admin? %> 
-        <%= link_to 'New Player', new_path, class: "btn-submit"  %>
-      <% end %>
+      <%= link_to 'Save changes', new_path, class: "btn-submit"  %>
+    <% end %>
       <%= link_to 'Back', players_path, class: "btn-submit" %>
     </div>
   </div>

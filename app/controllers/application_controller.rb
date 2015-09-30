@@ -14,5 +14,9 @@ class ApplicationController < ActionController::Base
   def require_player
     redirect_to '/login' unless current_player
   end
+
+  def require_admin
+    redirect_to '/' unless current_player.admin?
+  end
  
 end

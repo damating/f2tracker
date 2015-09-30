@@ -6,6 +6,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.text :avatar
+      t.string :role
       t.timestamps null: false
     end
   end

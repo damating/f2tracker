@@ -6,12 +6,18 @@ Rails.application.routes.draw do
   root 'pages#welcome'
 
   # Example of regular route:
-  get 'signup' => 'players#new'
-  resources :players
+  get 'signup' => 'players#signup'
+  get 'new' => 'players#new'
+  
+  get 'players' => 'players#index'
+  get 'destroy' => 'players#destroy'
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  resources :players
+
+  
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
