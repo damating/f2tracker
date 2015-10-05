@@ -14,6 +14,9 @@ class Player < ActiveRecord::Base
   has_many :matches
   validates :password, length: { minimum: 6 }, allow_blank: true
 
+  has_attached_file :avatar
+  validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
+
   def admin?
     self.role == 'admin'
   end

@@ -22,7 +22,7 @@
  
       <% @players.each do |player| %>
       <tr>
-        <td><%= player.avatar %></td>
+        <td><%= gravatar_for player, size: 80 %></td>
         <td><%= player.get_full_name %></td>
         <td></td>
         <td></td>
@@ -32,7 +32,7 @@
         <td><%= player.role %></td>
         <td class="icon"><%= link_to "", player, method: :delete,
                                   data: { confirm: "Are you sure?" }, class: "delete" %></td>
-        <td class="icon"><%= link_to "", edit_player_path(current_player), class: "edit" %></td>
+        <td class="icon"><%= link_to "", edit_player_path(player), class: "edit" %></td>
         <% end %>
       </tr>
       <% end %>

@@ -181,7 +181,7 @@ input[type="file"] {
 /* Table */
 
 .index th {
-  border-bottom: 3px solid #1A77FF;
+  border-bottom: 7px solid #1A77FF;
 }
 
 .index td {
@@ -189,10 +189,17 @@ input[type="file"] {
 }
 
 .index th, .index td {
-  padding: 12px 35px;
+  padding: 12px 25px;
   text-align: center;
   font-size: 14px;
 }
+
+.index th {
+  color: #fff;
+  font-family: 'Oswald', sans-serif; text-transform: uppercase;
+  background: #152230 none repeat scroll 0% 0%;
+}
+
 
 .index .box, .index tr {
   margin-bottom: 25px;
