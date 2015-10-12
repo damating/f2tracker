@@ -1,0 +1,24 @@
+class MatchesController < ApplicationController
+
+  def new
+    @match = Match.new
+  end
+
+  def create
+    @match = Match.new(match_params)
+    if @match.save
+      redirect_to '/'
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    Match.find(params[:id]).destroy
+  end
+
+  def match_params
+    params.require(:match).permit(:title, :date, :startTime, :player1_id, :player2_id,
+ :player1_goals, :player2_goals)
+  end
+end

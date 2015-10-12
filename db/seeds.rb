@@ -8,3 +8,5 @@
 
 bob = Player.create(first_name: 'Bob', last_name: 'Bob', email: 'bob@email.com', password: 'Bob123', password_confirmation: 'Bob123')
 monika = Player.create(first_name: 'Monika', last_name: 'Monika', email: 'monika@email.com', password: 'Monika123', password_confirmation: 'Monika123', role: 'admin')
+
+

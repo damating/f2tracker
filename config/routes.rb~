@@ -8,13 +8,17 @@ Rails.application.routes.draw do
   # Example of regular route:
   get 'signup' => 'players#signup'
   get 'new' => 'players#new'
-  resources :players
+  
   get 'players' => 'players#index'
   get 'destroy' => 'players#destroy'
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  resources :players
+
+  get 'matches/new' => 'matches#new'
+  resources :matches
 
   
 

@@ -1,0 +1,26 @@
+<div class="index">
+  <div class="container">
+    
+    <h1>Listing matches</h1>
+    <div class="box">
+    <table>
+      <tr>
+        <th></th>
+        <th>Player</th>
+        <th>Rating</th>
+
+      </tr>
+ 
+      <% @matches.each do |match| %>
+      <tr>
+        <td><%= gravatar_for player, size: 80 %></td>
+        <td><%= player.get_full_name %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <% end %>
+    </table>
+    </div>
+  </div>
+</div>

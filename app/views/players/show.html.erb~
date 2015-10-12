@@ -1,0 +1,39 @@
+<div class="show">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <%= gravatar_for @player %>
+        <h3><%= @player.get_full_name %></h3>
+
+        <div class="table-responsive">
+  	  <table class="table">
+	    <thead>
+            <tr>
+              <th>Date</th>	
+              <th>Title</th>
+              <th>Opponents</th>
+              <th>Winner</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%= @player.matches.find_each do |match| %>
+            <tr>
+	      <td><%= match.date %></td>
+	      <td><%= match.title %></td>
+	      <td><%= @player.get_full_name  + " vs. " + Player.find(match.player2_id).get_full_name %></td>
+              <td><%= match.winner %></td>
+            </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+        <br>
+      </div>
+      
+      <div class="col-md-4">
+        <strong>Won matches:</strong>
+        <%= @player.won_matches %>
+      </div>
+    </div>
+  </div>
+</div>

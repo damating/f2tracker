@@ -197,12 +197,12 @@ input[type="file"] {
 .index th {
   color: #fff;
   font-family: 'Oswald', sans-serif; text-transform: uppercase;
+  background: #152230 none repeat scroll 0% 0%;
 }
 
 
 .index .box, .index tr {
   margin-bottom: 25px;
-  background: #152230 none repeat scroll 0% 0%;
 }
 
 .box td a {
@@ -224,6 +224,17 @@ input[type="file"] {
   background-image: url("symbol5.png");
   background-position: center center;
 } 
+
+/* Show */
+.show .row .col-md-8 {
+    background: #FFF none repeat scroll 0% 0%;
+    padding: 20px 40px 40px;
+}
+
+.show .row .col-md-4 {
+    background: #152230 none repeat scroll 0% 0%;
+    padding: 20px 40px 40px;
+}
 
 /*.index h1 {
   margin-top: 20px;

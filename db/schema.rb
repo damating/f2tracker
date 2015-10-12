@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20151002222922) do
     t.time     "startTime"
     t.integer  "player1_id"
     t.integer  "player2_id"
+    t.integer  "winner"
     t.integer  "player1_goals"
     t.integer  "player2_goals"
     t.datetime "created_at",    null: false
@@ -30,7 +31,6 @@ ActiveRecord::Schema.define(version: 20151002222922) do
     t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "avatar"
     t.string   "role"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false

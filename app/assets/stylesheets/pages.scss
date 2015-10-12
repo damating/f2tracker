@@ -13,7 +13,6 @@ h1, h2, a {
 }
 
 .container {
-  max-width: 940px;
   margin: 0 auto;
 }
 
@@ -180,7 +179,7 @@ input[type="file"] {
 
 /* Table */
 
-.index th {
+.index th, .show .row th{
   border-bottom: 7px solid #1A77FF;
 }
 
@@ -198,6 +197,10 @@ input[type="file"] {
   color: #fff;
   font-family: 'Oswald', sans-serif; text-transform: uppercase;
   background: #152230 none repeat scroll 0% 0%;
+}
+
+.show .row th {
+  font-family: 'Oswald', sans-serif; text-transform: uppercase;
 }
 
 
@@ -225,16 +228,43 @@ input[type="file"] {
   background-position: center center;
 } 
 
-/*.index h1 {
-  margin-top: 20px;
-  margin-bottom: 40px;
+/* Show */
+
+.show .row {
+  margin: 50px 0px 50px;
+  display: flex;
+}
+
+.show .row .col-md-9 {
+  background: #FFF none repeat scroll 0% 0%;
+  padding: 20px 40px 40px;
+  height: 400px;
+  flex: 1;
+}
+
+.show .row .col-md-4 {
+  background: #152230 none repeat scroll 0% 0%;
+  padding: 20px 40px 40px;
+  color: #fff;
+}
+
+.show .row img {
+  float: left;
+  padding: 20px 30px 50px 0;
+}
+
+.show .row h1 {
+  padding: 20px 30px 50px 0;
+}
+
+.show .row ul li {
+  list-style-type:none;
+  font-family: 'Oswald', sans-serif; text-transform: uppercase;
   text-align: center;
-}*/
+  margin-bottom: 20px;
+}
 
-/*.index .box {
-    background: #FFF none repeat scroll 0% 0%;
-    padding: 20px 40px 40px;
-    margin: 50px 0;
-    position: relative;
-}*/
-
+.show .row ul li span {
+  color: #1A77FF;
+  font-size: 50px;
+}

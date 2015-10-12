@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   resources :players
 
+  get 'matches' => 'matches#index'
+  get 'matches/new' => 'matches#new'
+  resources :matches
+
   
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

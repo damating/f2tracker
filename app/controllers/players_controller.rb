@@ -49,6 +49,10 @@ class PlayersController < ApplicationController
     end
   end
 
+  def show
+    @player = Player.find(params[:id])
+  end
+
   private
   def player_params
     params.require(:player).permit(:first_name, :last_name, :email, :password, :avatar)

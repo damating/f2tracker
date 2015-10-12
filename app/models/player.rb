@@ -11,7 +11,7 @@ class Player < ActiveRecord::Base
 
   has_secure_password
 
-  has_many :matches
+  has_many :matches, dependent: :destroy
   validates :password, length: { minimum: 6 }, allow_blank: true
 
   has_attached_file :avatar
@@ -24,4 +24,37 @@ class Player < ActiveRecord::Base
   def get_full_name
 	"#{first_name} #{last_name}"
   end
+
+  def matches
+    Match.get_matches_by_person(self.id)
+  end
+
+  def played_matches
+    self.matches.count
+  end
+
+  def won_matches
+    Match.get_won_matches(self.id).count
+  end
+
+  def lost_matches
+    Match.get_lost_matches(self.id).count
+  end
+
+  def get_points
+    self.won_matches * 3 - self.lost_matches
+  end
+
+  def all_goals
+    Match.goals_number(self.id)
+  end
+
+  def average_goals_per_game
+    if !(matches.empty?)
+      (all_goals/played_matches).to_f
+    else
+      return 0
+    end
+  end
+
 end
