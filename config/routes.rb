@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   
   get 'players' => 'players#index'
   get 'destroy' => 'players#destroy'
+  get 'statistics' => 'players#statistics'
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'

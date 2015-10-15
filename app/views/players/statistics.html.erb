@@ -1,0 +1,26 @@
+<div class="statistics">
+  <div class="container">
+    <h2>Players with the best score.</h2>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+            <tr>
+            <th></th>
+              <th>Player</th>
+              <th>Wins</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @won_players.each do |player| %>
+            <tr>
+              <td><%= gravatar_for player, size: 80 %></td>
+              <td><%= player.get_full_name %></td>
+              <td><%= player.won_matches %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

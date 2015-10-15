@@ -53,6 +53,11 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
   end
 
+  def statistics
+    @matches = Match.get_won_matches(params[:id]).count
+    @won_players = Player.all
+  end
+
   private
   def player_params
     params.require(:player).permit(:first_name, :last_name, :email, :password, :avatar)

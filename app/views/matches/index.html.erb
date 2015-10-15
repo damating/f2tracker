@@ -1,40 +1,44 @@
 <div class="index">
   <div class="container">
-    
+
     <h1>Listing matches</h1>
     <div class="box">
-    <table>
-      <tr>
-        <th>Title</th>
-        <th></th>
-        <th>Player1</th>
-        <th>Result</th>
-        <th>Player2</th>
-        <th></th>
-        <th>Date</th>
-        <th>Start time</th>
-        <th></th>
-        <th></th>
-      </tr>
- 
-      <% @matches.each do |match| %>
-      <tr>
-        <td><%= match.title %></td>
-        <td><%= gravatar_for Player.find(match.player1_id), size: 80 %></td>
-        <td><%= Player.find(match.player1_id).get_full_name %></td>
-        <td><%= match.player1_goals %> : <%= match.player2_goals %></td>
-        <td><%= Player.find(match.player2_id).get_full_name %></td>
-        <td><%= gravatar_for Player.find(match.player2_id), size: 80 %></td>
-        <td><%= match.date %></td>
-        <td><%= match.startTime %></td>
-        <% if current_player && current_player.admin? %>
-            <td class="icon"><%= link_to "", match, method: :delete,
-                                         data: { confirm: "Are you sure?" }, class: "delete" %></td>
-            <td class="icon"><%= link_to "", edit_match_path(match), class: "edit" %></td>
-        <% end %>
-      </tr>
-      <% end %>
-    </table>
+      <div class="table-responsive">
+        <table>
+          <tr>
+            <th>Title</th>
+            <th></th>
+            <th>Player1</th>
+            <th>Result</th>
+            <th>Player2</th>
+            <th></th>
+            <th>Date</th>
+            <th>Start time</th>
+            <% if current_player && current_player.admin? %>
+                <th></th>
+                <th></th>
+            <% end %>
+          </tr>
+
+          <% @matches.each do |match| %>
+          <tr>
+            <td><%= match.title %></td>
+            <td><%= gravatar_for Player.find(match.player1_id), size: 80 %></td>
+            <td><%= Player.find(match.player1_id).get_full_name %></td>
+            <td><%= match.player1_goals %> : <%= match.player2_goals %></td>
+            <td><%= Player.find(match.player2_id).get_full_name %></td>
+            <td><%= gravatar_for Player.find(match.player2_id), size: 80 %></td>
+            <td><%= match.date %></td>
+            <td><%= match.startTime %></td>
+            <% if current_player && current_player.admin? %>
+                <td class="icon"><%= link_to "", match, method: :delete,
+                                             data: { confirm: "Are you sure?" }, class: "delete" %></td>
+                <td class="icon"><%= link_to "", edit_match_path(match), class: "edit" %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </table>
+      </div>
     </div>
     <% if current_player && current_player.admin? %>
         <%= link_to 'New Match', new_match_path, class: "btn-submit"  %>

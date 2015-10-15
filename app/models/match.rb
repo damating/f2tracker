@@ -41,6 +41,5 @@ class Match < ActiveRecord::Base
   def self.get_opponents
     "#{player1_goals} : #{player2_goals}"
   end
-
   
 end

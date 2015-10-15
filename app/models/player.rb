@@ -1,5 +1,7 @@
 class Player < ActiveRecord::Base
 
+  scope :desc, -> { order("players.won_matches DESC") }
+
   before_save { self.email = email.downcase }
   validates :first_name, presence: true, length: { maximum: 50 } 
   validates :last_name,  presence: true, length: { maximum: 50 }
@@ -55,6 +57,10 @@ class Player < ActiveRecord::Base
     else
       return 0
     end
+  end
+
+  def self.sort_by_wins
+    all.sort_by('&:won_matches DESC' )
   end
 
 end
