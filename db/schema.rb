@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 20151002222922) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "role"
+    t.integer  "wins"
+    t.integer  "losts"
+    t.integer  "points"
+    t.integer  "goals"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "avatar_file_name"

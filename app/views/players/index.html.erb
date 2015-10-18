@@ -25,9 +25,9 @@
           <tr>
             <td><%= gravatar_for player, size: 80 %></td>
             <td><%= player.get_full_name %></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><%= player.points %></td>
+            <td><%= player.wins %></td>
+            <td><%= player.losts %></td>
             <% if current_player && current_player.admin? %>
             <td><%= player.email %></td>
             <td><%= player.role %></td>

@@ -5,6 +5,9 @@ class Match < ActiveRecord::Base
 
   before_create :set_winner
 
+  validates_numericality_of :player1_goals, :only_integer => true
+  validates_numericality_of :player2_goals, :only_integer => true
+
   protected
   def set_winner
     if self.player1_goals == 10
@@ -23,7 +26,7 @@ class Match < ActiveRecord::Base
   end
 
   def self.get_won_matches(player_id)
-    get_matches_by_person(player_id).where("winner = ?", player_id)
+   get_matches_by_person(player_id).where("winner = ?", player_id)
   end
 
   def self.get_lost_matches(player_id)

@@ -28,6 +28,12 @@
         <%= f.label :player2_goals %><br>
         <%= f.number_field(:player2_goals, in: 0..10) %>
       </div>
-   <%= f.submit "Create", class: "btn-submit" %>
+
+     <% if current_page?(:controller => 'matches', :action => 'new') %>
+         <%= f.submit "Add match", class: "btn-submit" %>
+     <% else %>
+         <%= f.submit "Save changes", class: "btn-submit" %>
+     <% end %>
+     <%= link_to 'Back', matches_path, class: "btn-submit" %>
   </form>
 <% end %>

@@ -1,6 +1,6 @@
 <div class="statistics">
   <div class="container">
-    <h2>Players with the best score.</h2>
+    <h2>Players with the best score</h2>
 
     <div class="table-responsive">
       <table class="table">
@@ -8,15 +8,21 @@
             <tr>
             <th></th>
               <th>Player</th>
-              <th>Wins</th>
+              <th><%= sortable "wins" %></th>
+              <th><%= sortable "losts" %></th>
+              <th><%= sortable "points" %></th>
+              <th><%= sortable "goals" %></th>
             </tr>
         </thead>
         <tbody>
-        <% @won_players.each do |player| %>
+        <% @players.each do |player| %>
             <tr>
               <td><%= gravatar_for player, size: 80 %></td>
               <td><%= player.get_full_name %></td>
-              <td><%= player.won_matches %></td>
+              <td><%= player.wins %></td>
+              <td><%= player.losts %></td>
+              <td><%= player.points %></td>
+              <td><%= player.goals %></td>
             </tr>
         <% end %>
         </tbody>

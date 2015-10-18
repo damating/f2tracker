@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
 
+  helper_method :sort_column, :sort_direction
   before_action :require_player, only: [:index]
 
   def index
@@ -54,13 +55,23 @@ class PlayersController < ApplicationController
   end
 
   def statistics
-    @matches = Match.get_won_matches(params[:id]).count
-    @won_players = Player.all
+    @players = Player.order(sort_column + ' ' + sort_direction)
+  end
+
+  #check that the sort parameter matches one of the fields in Player model
+  private
+  def sort_column
+    Player.column_names.include?(params[:sort]) ? params[:sort] : "wins"
+  end
+
+  #check that the passed parameter matches one of two values
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 
   private
   def player_params
-    params.require(:player).permit(:first_name, :last_name, :email, :password, :avatar)
+    params.require(:player).permit(:first_name, :last_name, :email, :password, :avatar, :role, :wins, :losts, :points, :goals)
   end
 
 end

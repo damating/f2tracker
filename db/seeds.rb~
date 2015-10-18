@@ -9,6 +9,4 @@
 bob = Player.create(first_name: 'Bob', last_name: 'Bob', email: 'bob@email.com', password: 'Bob123', password_confirmation: 'Bob123')
 monika = Player.create(first_name: 'Monika', last_name: 'Monika', email: 'monika@email.com', password: 'Monika123', password_confirmation: 'Monika123', role: 'admin')
 
-match1 = Match.create(title: 'Match1', date: Date.new(2009,9,1), startTime: Time.new(2,20), player1_id: 1, player2_id: 2, player1_goals: 10, player2_goals: 7)
 
-match2 = Match.create(title: 'Match2', date: Date.new(2010,15,4), startTime: Time.new(2,20), player1_id: 1, player2_id: 3, player1_goals: 6, player2_goals: 10)

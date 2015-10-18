@@ -268,3 +268,17 @@ input[type="file"] {
   color: #1A77FF;
   font-size: 50px;
 }
+
+.table th .current {
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+.table th .asc {
+  background-image: url("up_arrow1.png");
+}
+
+.table th .desc {
+  background-image: url("down_arrow1.png");
+}
+

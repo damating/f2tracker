@@ -6,6 +6,10 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.string :role
+      t.integer :wins
+      t.integer :losts
+      t.integer :points
+      t.integer :goals
       t.timestamps null: false
     end
   end

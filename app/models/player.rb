@@ -1,8 +1,7 @@
 class Player < ActiveRecord::Base
 
-  scope :desc, -> { order("players.won_matches DESC") }
-
-  before_save { self.email = email.downcase }
+  has_many :matches   #, dependent: :destroy
+  before_save :set_player
   validates :first_name, presence: true, length: { maximum: 50 } 
   validates :last_name,  presence: true, length: { maximum: 50 }
 
@@ -12,12 +11,20 @@ class Player < ActiveRecord::Base
 		    uniqueness: { case_sensitive: false }
 
   has_secure_password
-
-  has_many :matches, dependent: :destroy
   validates :password, length: { minimum: 6 }, allow_blank: true
 
   has_attached_file :avatar
   validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
+
+
+  protected
+  def set_player
+    self.email = email.downcase
+    self.wins = 0
+    self.losts = 0
+    self.points = 0
+    self.goals = 0
+  end
 
   def admin?
     self.role == 'admin'
@@ -43,8 +50,12 @@ class Player < ActiveRecord::Base
     Match.get_lost_matches(self.id).count
   end
 
+  #def get_points
+   # self.won_matches * 3 - self.lost_matches
+  #end
+
   def get_points
-    self.won_matches * 3 - self.lost_matches
+    self.wins * 3 - self.losts
   end
 
   def all_goals
@@ -57,10 +68,6 @@ class Player < ActiveRecord::Base
     else
       return 0
     end
-  end
-
-  def self.sort_by_wins
-    all.sort_by('&:won_matches DESC' )
   end
 
 end
