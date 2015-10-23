@@ -1,9 +1,11 @@
 class Player < ActiveRecord::Base
 
-  has_many :matches   #, dependent: :destroy
+  #attr_accessor :password
+  has_many :matches, dependent: :destroy
   before_save :set_player
-  validates :first_name, presence: true, length: { maximum: 50 } 
-  validates :last_name,  presence: true, length: { maximum: 50 }
+
+  validates :first_name, presence: true, length: { maximum: 20 }
+  validates :last_name,  presence: true, length: { maximum: 30 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -11,13 +13,11 @@ class Player < ActiveRecord::Base
 		    uniqueness: { case_sensitive: false }
 
   has_secure_password
-  validates :password, length: { minimum: 6 }, allow_blank: true
+  validates :password, length: { minimum: 6 }, allow_blank: true, on: create
 
   has_attached_file :avatar
   validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
 
-
-  protected
   def set_player
     self.email = email.downcase
     self.wins = 0

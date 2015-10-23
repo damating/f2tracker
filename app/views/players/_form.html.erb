@@ -1,4 +1,5 @@
-<%= form_for(@player) do |f| %>
+<%= form_for @player, validate: true do |f| %>
+
       <form role="form">
         <div class="form-group">
           <%= f.label :first_name %><br>
@@ -22,19 +23,15 @@
         </div>
 
         <% if current_page?(:controller => 'players', :action => 'signup') %>
-          <%= f.submit "Sign up", class: "btn-submit" %>
-        <% elsif current_page?(:controller => 'players', :action => 'new') %>
-          <div class="form-group">
-            <%= f.label :role %>
-            <%= f.text_field :role, class: 'form-control' %>
-          </div>
-          <%= f.submit "Add player", class: "btn-submit" %>
+            <%= f.submit "Sign up", class: "btn-submit" %>
+            <%= link_to 'Back', root_path, class: "btn-submit" %>
         <% else %>
           <div class="form-group">
             <%= f.label :role %>
             <%= f.text_field :role, class: 'form-control' %>
           </div>
-          <%= f.submit "Save changes", class: "btn-submit" %>
+            <%= f.submit button_label, class: "btn-submit" %>
+            <%= link_to 'Back', players_path, class: "btn-submit" %>
         <% end %>
       </form>
 <% end %>

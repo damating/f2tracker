@@ -28,6 +28,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'paperclip'
 
+gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations', branch: '4-2-stable'
+gem 'select-multiple-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -1,8 +1,12 @@
 <div class="main">
   <div class="container">
     <h1>Foosball Tracker</h1>
-    <p>If you want to track foosball matches, view statistics and have your own profile, please sign in! </p>
-    <a class="btn" href="/signup">Join</a>
+    <% if current_player %>
+        <p>Welcome to the page! </p>
+    <% else %>
+        <p>If you want to track foosball matches, view statistics and have your own profile, please sign in! </p>
+        <a class="btn" href="/signup">Join</a>
+    <% end %>
   </div>
 </div>
 

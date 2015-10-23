@@ -18,16 +18,17 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     if params[:commit] == 'Sign up'
+      @player.role = params[:checked_value]
         if @player.save
           redirect_to '/'
         else
           redirect_to '/signup'
         end
-    elsif params[:commit] == 'Add player'
+    elsif params[:commit] == 'Create player'
          if @player.save
           redirect_to '/players'
         else
-          redirect_to '/players'
+          redirect_to '/new'
         end
     end
   end
@@ -52,6 +53,9 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find(params[:id])
+    if @player.nil?
+      redirect_to :action => "index" and return
+    end
   end
 
   def statistics
