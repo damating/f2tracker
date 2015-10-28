@@ -7,7 +7,7 @@
      </div>
      <div class="form-group">
        <%= f.label :date %><br>
-       <%= f.select :date, class: 'form-control' %>
+       <%= f.date_select :date, class: 'form-control' %>
       </div>
       <div class="form-group">
         <%= f.label :startTime %><br>
@@ -34,3 +34,54 @@
      <%= link_to 'Back', matches_path, class: "btn-submit" %>
   </form>
 <% end %>
+
+<script>
+    var y,ytext;
+    var y2,y2text;
+
+    $( document ).ready(function() {
+        y  = $('#match_player1_id').find(":selected").val();
+        ytext  = $('#match_player1_id').find(":selected").text();
+
+
+        $("#match_player2_id option[value="+ y +"]").remove();
+
+        y2  = $('#match_player2_id').find(":selected").val();
+        y2text  = $('#match_player2_id').find(":selected").text();
+        $("#match_player1_id option[value="+ y2 +"]").remove();
+
+    });
+
+
+    $("#match_player1_id").on("change", function (e) {
+        var x  = $('#match_player1_id').find(":selected").val();
+        var xtext  = $('#match_player1_id').find(":selected").text();
+
+       $("#match_player2_id option[value="+ x +"]").remove();
+
+        $('#match_player2_id').append($('<option>', {
+            value: y,
+            text: ytext
+        }));
+
+        y=x;
+        ytext=xtext;
+    });
+
+    $("#match_player2_id").on("change", function (e) {
+        var x  = $('#match_player2_id').find(":selected").val();
+        var xtext  = $('#match_player2_id').find(":selected").text();
+
+        $("#match_player1_id option[value="+ x +"]").remove();
+
+        $('#match_player1_id').append($('<option>', {
+            value: y2,
+            text: y2text
+        }));
+
+        y2=x;
+        y2text=xtext;
+    });
+
+
+</script>

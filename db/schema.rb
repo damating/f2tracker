@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002222922) do
+ActiveRecord::Schema.define(version: 20151023192404) do
+
+  create_table "badges", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "points_limit"
+    t.string   "icon"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "matches", force: :cascade do |t|
     t.string   "title"
@@ -42,6 +50,9 @@ ActiveRecord::Schema.define(version: 20151002222922) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "badge_id"
   end
+
+  add_index "players", ["badge_id"], name: "index_players_on_badge_id"
 
 end

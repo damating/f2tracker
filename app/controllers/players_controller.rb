@@ -16,9 +16,11 @@ class PlayersController < ApplicationController
   end
 
   def create
+   params[:role] = "aaa"
     @player = Player.new(player_params)
+
     if params[:commit] == 'Sign up'
-      @player.role = params[:checked_value]
+      #@player.role = params[:checked_value]
         if @player.save
           redirect_to '/'
         else
@@ -75,7 +77,7 @@ class PlayersController < ApplicationController
 
   private
   def player_params
-    params.require(:player).permit(:first_name, :last_name, :email, :password, :avatar, :role, :wins, :losts, :points, :goals)
+    params.require(:player).permit(:first_name, :last_name, :email, :password, :avatar, :role, :wins, :losts, :points, :goals, :badge_id)
   end
 
 end

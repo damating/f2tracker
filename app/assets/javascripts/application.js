@@ -14,7 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require rails.validations
+//= require rails.validations.js
 //= require select-multiple
 //= require_tree .
 

@@ -1,7 +1,7 @@
 class Player < ActiveRecord::Base
 
-  #attr_accessor :password
-  has_many :matches, dependent: :destroy
+  has_many :matches#, dependent: :destroy
+  belongs_to :badge
   before_save :set_player
 
   validates :first_name, presence: true, length: { maximum: 20 }

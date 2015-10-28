@@ -15,6 +15,7 @@
             <% if current_player && current_player.admin? %>
             <th>Email</th>
             <th>Roles</th>
+                <th>Badge</th>
             <th></th>
             <th></th>
             <% end %>
@@ -31,8 +32,10 @@
             <% if current_player && current_player.admin? %>
             <td><%= player.email %></td>
             <td><%= player.role %></td>
+            <td><%= image_tag Badge.find(player.badge_id).icon %></td>
+
             <td class="icon"><%= link_to "", player, method: :delete,
-                                      data: { confirm: "Are you sure?" }, class: "delete" %></td>
+                                      data: { confirm: "Are you sure" }, class: "delete" %></td>
             <td class="icon"><%= link_to "", edit_player_path(player), class: "edit" %></td>
             <% end %>
           </tr>
