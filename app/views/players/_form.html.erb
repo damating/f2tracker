@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
           <%= f.label :avatar %>
-          <%= f.file_field :avatar, class: 'form-control' %>
+          <%= f.file_field :avatar, class: 'form-control', size: 80 %>
         </div>
 
         <% if current_page?(:controller => 'players', :action => 'signup') %>
@@ -31,10 +31,10 @@
             <%= f.check_box :role, { class: 'form-control' }, "admin", "player" %>
           </div>
 
-            <div class="form-group">
-              <%= f.label :badge_id %><br>
-              <%= collection_select(:player, :badge_id, Badge.all, :id, :name) %>
-            </div>
+            <!--<div class="form-group">-->
+              <!--<%= f.label :badge_id %><br>-->
+              <!--<%= collection_select(:player, :badge_id, Badge.all, :id, :name) %>-->
+            <!--</div>-->
             <%= f.submit button_label, class: "btn-submit" %>
             <%= link_to 'Back', players_path, class: "btn-submit" %>
         <% end %>

@@ -7,6 +7,8 @@ class Match < ActiveRecord::Base
 
   validates_numericality_of :player1_goals, :only_integer => true
   validates_numericality_of :player2_goals, :only_integer => true
+  validates :player1_goals, inclusion: { in: 0..10 }
+  validates :player2_goals, inclusion: { in: 0..10 }
 
   protected
   def set_winner

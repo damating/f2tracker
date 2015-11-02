@@ -2,9 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="col-md-9">
-        <%= gravatar_for @player %>
-        <h1><%= @player.get_full_name %></h1>
 
+        <%= gravatar_for @player, size: 120 %>
+
+        <div>
+            <h1><%= @player.get_full_name %></h1>
+            <span><%= image_tag Badge.find(@player.badge_id).icon %></span>
+        </div>
         <div class="table-responsive">
   	    <table class="table">
 	        <thead>
@@ -43,6 +47,10 @@
       <div class="col-md-3">
         <ul>
           <li>
+            <h4>Rating</h4>
+            <span><%= @player.get_points %></span>
+          </li>
+          <li>
             <h4>Played matches</h4>
             <span><%= @player.played_matches %></span>
           </li>
@@ -57,10 +65,6 @@
           <li>
             <h4>Average number of goals</h4>
             <span><%= @player.average_goals_per_game %></span>
-          </li>
-          <li>
-            <h4>Rating</h4>
-            <span><%= @player.get_points %></span>
           </li>
         </ul>
       </div>

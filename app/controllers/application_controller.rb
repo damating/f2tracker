@@ -8,7 +8,14 @@ class ApplicationController < ActionController::Base
   #check if player is logged in or logged out
   def current_player
     @current_player ||= Player.find(session[:player_id]) if session[:player_id]
-  end 
+  end
+
+  # Returns true if the user is logged in, false otherwise.
+  def logged_in?
+    !current_player.nil?
+  end
+
+
 
   #redirect logged out players to the login page
   def require_player
@@ -18,5 +25,6 @@ class ApplicationController < ActionController::Base
   def require_admin
     redirect_to '/' unless current_player.admin?
   end
+
  
 end

@@ -1,10 +1,12 @@
 <div class="index">
   <div class="container">
-    
+
     <h1>Listing players</h1>
+
     <div class="box">
       <div class="table-responsive">
-        <table>
+        <table class="table">
+          <thead>
           <tr>
             <th></th>
             <th>Player</th>
@@ -13,39 +15,41 @@
             <th>Losts</th>
 
             <% if current_player && current_player.admin? %>
-            <th>Email</th>
-            <th>Roles</th>
+                <th>Email</th>
+                <th>Roles</th>
                 <th>Badge</th>
-            <th></th>
-            <th></th>
+                <th></th>
+                <th></th>
             <% end %>
 
           </tr>
-
+          </thead>
+          <tbody>
           <% @players.each do |player| %>
-          <tr>
-            <td><%= gravatar_for player, size: 80 %></td>
-            <td><%= player.get_full_name %></td>
-            <td><%= player.points %></td>
-            <td><%= player.wins %></td>
-            <td><%= player.losts %></td>
-            <% if current_player && current_player.admin? %>
-            <td><%= player.email %></td>
-            <td><%= player.role %></td>
-            <td><%= image_tag Badge.find(player.badge_id).icon %></td>
+              <tr>
+                <td><%= gravatar_for player, size:80 %></td>
+                <td><%= player.get_full_name %></td>
+                <td><%= player.points %></td>
+                <td><%= player.wins %></td>
+                <td><%= player.losts %></td>
+                <% if current_player && current_player.admin? %>
+                    <td><%= player.email %></td>
+                    <td><%= player.role %></td>
+                    <td><%= image_tag Badge.find(player.badge_id).icon %></td>
 
-            <td class="icon"><%= link_to "", player, method: :delete,
-                                      data: { confirm: "Are you sure" }, class: "delete" %></td>
-            <td class="icon"><%= link_to "", edit_player_path(player), class: "edit" %></td>
-            <% end %>
-          </tr>
+                    <td class="icon"><%= link_to "", player, method: :delete,
+                                                 data: {confirm: "Are you sure"}, class: "delete" %></td>
+                    <td class="icon"><%= link_to "", edit_player_path(player), class: "edit" %></td>
+                <% end %>
+              </tr>
           <% end %>
+          </tbody>
         </table>
       </div>
     </div>
-    <% if current_player && current_player.admin? %> 
-      <%= link_to 'New Player', new_path, class: "btn-submit"  %>
+    <% if current_player && current_player.admin? %>
+        <%= link_to 'New Player', new_path, class: "btn-submit" %>
     <% end %>
-    
+
   </div>
 </div>

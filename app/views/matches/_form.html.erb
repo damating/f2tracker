@@ -1,13 +1,13 @@
 <%= form_for(@match) do |f| %>
 
-   <form role="form">
-     <div class="form-group">
-       <%= f.label :title %><br>
-       <%= f.text_field :title, class: 'form-control'%>
-     </div>
-     <div class="form-group">
-       <%= f.label :date %><br>
-       <%= f.date_select :date, class: 'form-control' %>
+    <form role="form">
+      <div class="form-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :date %><br>
+        <%= f.date_select :date, class: 'form-control' %>
       </div>
       <div class="form-group">
         <%= f.label :startTime %><br>
@@ -19,7 +19,7 @@
       </div>
       <div class="form-group">
         <%= f.label :player2_id %><br>
-        <%= collection_select(:match, :player2_id, Player.all, :id, :get_full_name)%>
+        <%= collection_select(:match, :player2_id, Player.all, :id, :get_full_name) %>
       </div>
       <div class="form-group">
         <%= f.label :player1_goals %><br>
@@ -30,57 +30,75 @@
         <%= f.number_field(:player2_goals, in: 0..10) %>
       </div>
 
-     <%= f.submit button_label, class: "btn-submit" %>
-     <%= link_to 'Back', matches_path, class: "btn-submit" %>
-  </form>
+      <%= f.submit button_label, class: "btn-submit" %>
+      <%= link_to 'Back', matches_path, class: "btn-submit" %>
+    </form>
 <% end %>
 
 <script>
-    var y,ytext;
-    var y2,y2text;
+    var y, ytext;
+    var y2, y2text;
 
-    $( document ).ready(function() {
-        y  = $('#match_player1_id').find(":selected").val();
-        ytext  = $('#match_player1_id').find(":selected").text();
+    $(document).ready(function () {
+        y = $('#match_player1_id').find(":selected").val();
+        ytext = $('#match_player1_id').find(":selected").text();
 
 
-        $("#match_player2_id option[value="+ y +"]").remove();
+        $("#match_player2_id option[value=" + y + "]").remove();
 
-        y2  = $('#match_player2_id').find(":selected").val();
-        y2text  = $('#match_player2_id').find(":selected").text();
-        $("#match_player1_id option[value="+ y2 +"]").remove();
+        y2 = $('#match_player2_id').find(":selected").val();
+        y2text = $('#match_player2_id').find(":selected").text();
+        $("#match_player1_id option[value=" + y2 + "]").remove();
 
     });
 
 
     $("#match_player1_id").on("change", function (e) {
-        var x  = $('#match_player1_id').find(":selected").val();
-        var xtext  = $('#match_player1_id').find(":selected").text();
+        var x = $('#match_player1_id').find(":selected").val();
+        var xtext = $('#match_player1_id').find(":selected").text();
 
-       $("#match_player2_id option[value="+ x +"]").remove();
+        $("#match_player2_id option[value=" + x + "]").remove();
 
         $('#match_player2_id').append($('<option>', {
             value: y,
             text: ytext
         }));
 
-        y=x;
-        ytext=xtext;
+        y = x;
+        ytext = xtext;
     });
 
     $("#match_player2_id").on("change", function (e) {
-        var x  = $('#match_player2_id').find(":selected").val();
-        var xtext  = $('#match_player2_id').find(":selected").text();
+        var x = $('#match_player2_id').find(":selected").val();
+        var xtext = $('#match_player2_id').find(":selected").text();
 
-        $("#match_player1_id option[value="+ x +"]").remove();
+        $("#match_player1_id option[value=" + x + "]").remove();
 
         $('#match_player1_id').append($('<option>', {
             value: y2,
             text: y2text
         }));
 
-        y2=x;
-        y2text=xtext;
+        y2 = x;
+        y2text = xtext;
+    });
+
+    $("#match_player1_goals").on("change", function (e) {
+        if ($("#match_player1_goals").val() < 10) {
+            $("#match_player2_goals").val(10);
+        }
+        else if($("#match_player1_goals").val() == 10) {
+            $("#match_player2_goals").attr('max', 9);
+        }
+    });
+
+    $("#match_player2_goals").on("change", function (e) {
+        if ($("#match_player2_goals").val() < 10) {
+            $("#match_player1_goals").val(10);
+        }
+        else if($("#match_player2_goals").val() == 10)  {
+            $("#match_player1_goals").attr('max', 9);
+        }
     });
 
 

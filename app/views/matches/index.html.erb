@@ -4,7 +4,8 @@
     <h1>Listing matches</h1>
     <div class="box">
       <div class="table-responsive">
-        <table>
+        <table class="table">
+          <thead>
           <tr>
             <th>Title</th>
             <th></th>
@@ -19,7 +20,9 @@
                 <th></th>
             <% end %>
           </tr>
+          </thead>
 
+          <tbody>
           <% @matches.each do |match| %>
           <tr>
 
@@ -30,7 +33,7 @@
                 <td><%= Player.find(match.player1_id).get_full_name %></td>
             <% else %>
                 <td><%= image_tag 'deleted_user.png', size: 80 %></td>
-                <td>Gracz usunięty</td>
+                <td>Player deleted</td>
             <% end %>
             <td><%= match.player1_goals %> : <%= match.player2_goals %></td>
             <% if Player.exists?(match.player2_id) %>
@@ -49,11 +52,13 @@
                 <% end %>
             <% end %>
           </tr>
+          </tbody>
         </table>
       </div>
-    </div>
+
     <% if current_player && current_player.admin? %>
         <%= link_to 'New Match', new_match_path, class: "btn-submit"  %>
     <% end %>
   </div>
+</div>
 </div>

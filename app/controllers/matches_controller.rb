@@ -128,4 +128,6 @@ def players_medal(player_id)
   else
     @player.badge_id = @badges[0].id
   end
+  @player.badge_id
+  return @player.badge_id
 end
