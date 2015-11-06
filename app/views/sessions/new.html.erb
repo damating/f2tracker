@@ -3,11 +3,11 @@
       <h1>Log in</h1>
       <%= form_for(:session, url: login_path) do |f|  %>
       <form role="form">
-        <div class="form-group" id="ff">
+        <div class="form-group" id="mailDiv">
           <%= f.label :email  %><br>
           <%= f.email_field :email, class: 'form-control' %>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="passDiv">
           <%= f.label :password %><br>
           <%= f.password_field :password, class: 'form-control' %>
         </div>
@@ -17,3 +17,55 @@
     </div>
   </div>
 </div>
+
+
+<script>
+
+    $( "#session_email" ).focusout(function() {
+        $("#message").remove();
+        if($("#session_email").val()=="")
+        {
+            $("#mailDiv").append('<label class="message" id="message">can\u2019t be blank</label>');
+        }
+        else
+        {
+            $("#message").remove();
+            if( !isValidEmailAddress( $("#session_email").val() ) )
+            {
+                $("#mailDiv").append('<label class="message" id="message">is invalid</label>');
+            }
+            else
+            {
+                $("#message").remove();
+            }
+        }
+    });
+
+    function isValidEmailAddress(emailAddress) {
+        var pattern = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i;
+        return pattern.test(emailAddress);
+    };
+
+    $( "#session_password" ).focusout(function() {
+        $("#message").remove();
+        if($("#session_password").val()=="")
+        {
+            $("#passDiv").append('<label class="message" id="message">can\u2019t be blank</label>');
+        }
+        else
+        {
+            $("#message").remove();
+            if( $("#session_password").length < 6 )
+            {
+                $("#passDiv").append('<label class="message" id="message">is too short</label>');
+            }
+            else
+            {
+                $("#message").remove();
+            }
+        }
+    });
+
+
+
+</script>

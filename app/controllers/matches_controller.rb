@@ -3,7 +3,7 @@ class MatchesController < ApplicationController
   before_action :require_admin, only: [:edit]
 
   def index
-    @matches = Match.all
+    @matches = Match.all.reverse
   end
 
   def new

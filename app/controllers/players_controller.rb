@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   before_action :require_player, only: [:edit, :show]
 
   def index
-    @players = Player.all
+    @players = Player.all.reverse
   end
 
   def signup

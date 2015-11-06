@@ -21,7 +21,7 @@ class Player < ActiveRecord::Base
 		    uniqueness: { case_sensitive: false }
 
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }#, on: create
+  validates :password, presence: true, length: { minimum: 6 } #, on: create
 
   has_attached_file :avatar
   #validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
@@ -58,10 +58,6 @@ class Player < ActiveRecord::Base
   def lost_matches
     Match.get_lost_matches(self.id).count
   end
-
-  #def get_points
-   # self.won_matches * 3 - self.lost_matches
-  #end
 
   def get_points
     self.wins * 3 - self.losts

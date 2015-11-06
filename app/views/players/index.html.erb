@@ -1,7 +1,7 @@
 <div class="index">
   <div class="container">
 
-    <h1>Listing players</h1>
+    <h1>All players</h1>
 
     <div class="box">
       <div class="table-responsive">
@@ -27,7 +27,7 @@
           <tbody>
           <% @players.each do |player| %>
               <tr>
-                <td><%= gravatar_for player, size:80 %></td>
+                <td><%= gravatar_for player, size: "80" %></td>
                 <td><%= player.get_full_name %></td>
                 <td><%= player.points %></td>
                 <td><%= player.wins %></td>
