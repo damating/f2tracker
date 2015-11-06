@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class PagesControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+   test "should get welcome" do
+     get :welcome
+     assert_response :success
+   end
 end

@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
 
   helper_method :sort_column, :sort_direction
-  before_action :require_player, only: [:index]
+  before_action :require_player, only: [:edit, :show]
 
   def index
     @players = Player.all
@@ -16,15 +16,12 @@ class PlayersController < ApplicationController
   end
 
   def create
-   params[:role] = "aaa"
     @player = Player.new(player_params)
-
     if params[:commit] == 'Sign up'
-      #@player.role = params[:checked_value]
         if @player.save
           redirect_to '/'
         else
-          redirect_to '/signup'
+          redirect_to signup_path
         end
     elsif params[:commit] == 'Create player'
          if @player.save

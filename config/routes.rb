@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # Example of regular route:
   get 'signup' => 'players#signup'
   get 'new' => 'players#new'
+  post 'players' => 'players#create'
   
   get 'players' => 'players#index'
   get 'destroy' => 'players#destroy'

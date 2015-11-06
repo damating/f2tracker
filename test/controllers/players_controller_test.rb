@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class PlayersControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should get signup" do
+    get :signup
+    assert_response :success
+  end
 end

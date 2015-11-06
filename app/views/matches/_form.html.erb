@@ -86,6 +86,7 @@
     $("#match_player1_goals").on("change", function (e) {
         if ($("#match_player1_goals").val() < 10) {
             $("#match_player2_goals").val(10);
+            $("#match_player2_goals").attr('max', 10);
         }
         else if($("#match_player1_goals").val() == 10) {
             $("#match_player2_goals").attr('max', 9);
@@ -95,6 +96,7 @@
     $("#match_player2_goals").on("change", function (e) {
         if ($("#match_player2_goals").val() < 10) {
             $("#match_player1_goals").val(10);
+            $("#match_player1_goals").attr('max', 10);
         }
         else if($("#match_player2_goals").val() == 10)  {
             $("#match_player1_goals").attr('max', 9);

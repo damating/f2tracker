@@ -1,11 +1,12 @@
 class MatchesController < ApplicationController
 
+  before_action :require_admin, only: [:edit]
+
   def index
     @matches = Match.all
   end
 
   def new
-
     @match = Match.new
   end
 
@@ -24,11 +25,14 @@ class MatchesController < ApplicationController
       @player1_goals = players_goals(@match.player1_id)
       @player2_goals = players_goals(@match.player2_id)
 
+      update_player(@match.player1_id, @player1_wins, @player1_losts, @player1_points, @player1_goals)
+      update_player(@match.player2_id, @player2_wins, @player2_losts, @player2_points, @player2_goals)
+
       @player1_medal = players_medal(@match.player1_id)
       @player2_medal = players_medal(@match.player2_id)
 
-      update_player(@match.player1_id, @player1_wins, @player1_losts, @player1_points, @player1_goals, @player1_medal)
-      update_player(@match.player2_id, @player2_wins, @player2_losts, @player2_points, @player2_goals, @player2_medal)
+      update_player_medal(@match.player1_id, @player1_medal)
+      update_player_medal(@match.player2_id, @player2_medal)
       redirect_to matches_path
     else
       render :new
@@ -50,11 +54,15 @@ class MatchesController < ApplicationController
     @player1_goals = players_goals(@match.player1_id)
     @player2_goals = players_goals(@match.player2_id)
 
+    update_player(@match.player1_id, @player1_wins, @player1_losts, @player1_points, @player1_goals)
+    update_player(@match.player2_id, @player2_wins, @player2_losts, @player2_points, @player2_goals)
+
     @player1_medal = players_medal(@match.player1_id)
     @player2_medal = players_medal(@match.player2_id)
 
-    update_player(@match.player1_id, @player1_wins, @player1_losts, @player1_points, @player1_goals, @player1_medal)
-    update_player(@match.player2_id, @player2_wins, @player2_losts, @player2_points, @player2_goals, @player2_medal)
+    update_player_medal(@match.player1_id, @player1_medal)
+    update_player_medal(@match.player2_id, @player2_medal)
+
     redirect_to matches_path
   end
 
@@ -77,11 +85,15 @@ class MatchesController < ApplicationController
       @player1_goals = players_goals(@match.player1_id)
       @player2_goals = players_goals(@match.player2_id)
 
+      update_player(@match.player1_id, @player1_wins, @player1_losts, @player1_points, @player1_goals)
+      update_player(@match.player2_id, @player2_wins, @player2_losts, @player2_points, @player2_goals)
+
       @player1_medal = players_medal(@match.player1_id)
       @player2_medal = players_medal(@match.player2_id)
 
-      update_player(@match.player1_id, @player1_wins, @player1_losts, @player1_points, @player1_goals, @player1_medal)
-      update_player(@match.player2_id, @player2_wins, @player2_losts, @player2_points, @player2_goals, @player2_medal)
+      update_player_medal(@match.player1_id, @player1_medal)
+      update_player_medal(@match.player2_id, @player2_medal)
+
       redirect_to matches_path
     else
       render 'edit'
@@ -114,8 +126,12 @@ def players_goals(player_id)
   end
 end
 
-def update_player(player_id, player_wins, player_losts, player_points, player_goals, player_medal)
-  Player.where(:id => player_id).update_all(wins: player_wins, losts: player_losts, points: player_points, goals: player_goals, badge_id: player_medal)
+def update_player(player_id, player_wins, player_losts, player_points, player_goals)
+  Player.where(:id => player_id).update_all(wins: player_wins, losts: player_losts, points: player_points, goals: player_goals)
+end
+
+def update_player_medal(player_id, player_medal)
+  Player.where(:id => player_id).update_all( badge_id: player_medal)
 end
 
 def players_medal(player_id)

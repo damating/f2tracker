@@ -27,8 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'paperclip'
-
-gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations', branch: '4-2-stable'
+gem 'client_side_validations', github: "bcardarella/client_side_validations"
 gem 'select-multiple-rails'
 
 # Use Unicorn as the app server

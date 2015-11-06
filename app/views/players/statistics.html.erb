@@ -18,7 +18,7 @@
         <tbody>
         <% @players.each do |player| %>
             <tr>
-              <td><%= gravatar_for player, size: 80 %></td>
+              <td><%= gravatar_for player, size: "80" %></td>
               <td><%= player.get_full_name %></td>
               <td><%= image_tag Badge.find(player.badge_id).icon %></td>
               <td><%= player.wins %></td>

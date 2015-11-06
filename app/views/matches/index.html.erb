@@ -29,16 +29,16 @@
             <td><%= match.title %></td>
 
             <% if Player.exists?(match.player1_id) %>
-                <td><%= gravatar_for Player.find(match.player1_id), size: 80 %></td>
+                <td><%= gravatar_for Player.find(match.player1_id), size: "80"   %></td>
                 <td><%= Player.find(match.player1_id).get_full_name %></td>
             <% else %>
-                <td><%= image_tag 'deleted_user.png', size: 80 %></td>
+                <td><%= image_tag 'deleted_user.png', size: "80" %></td>
                 <td>Player deleted</td>
             <% end %>
             <td><%= match.player1_goals %> : <%= match.player2_goals %></td>
             <% if Player.exists?(match.player2_id) %>
                 <td><%= Player.find(match.player2_id).get_full_name %></td>
-                <td><%= gravatar_for Player.find(match.player2_id), size: 80 %></td>
+                <td><%= gravatar_for Player.find(match.player2_id), size: "80" %></td>
             <% else %>
                 <td>Gracz usunięty</td>
             <% end %>
