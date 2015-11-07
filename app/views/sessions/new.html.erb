@@ -42,26 +42,26 @@
     });
 
     function isValidEmailAddress(emailAddress) {
-        var pattern = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i;
+        var pattern = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
         return pattern.test(emailAddress);
     };
 
     $( "#session_password" ).focusout(function() {
-        $("#message").remove();
+        $("#message_password").remove();
         if($("#session_password").val()=="")
         {
-            $("#passDiv").append('<label class="message" id="message">can\u2019t be blank</label>');
+            $("#passDiv").append('<label class="message" id="message_password">can\u2019t be blank</label>');
         }
         else
         {
-            $("#message").remove();
+            $("#message_password").remove();
             if( $("#session_password").length < 6 )
             {
-                $("#passDiv").append('<label class="message" id="message">is too short</label>');
+                $("#passDiv").append('<label class="message" id="message_password">is too short</label>');
             }
             else
             {
-                $("#message").remove();
+                $("#message_password").remove();
             }
         }
     });

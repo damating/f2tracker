@@ -101,7 +101,7 @@ h1, h2, a {
 /* Buttons */
 
 
-.main .btn, .login .btn-submit, .index .btn-submit {
+.main .btn, .login .btn-submit, .index .btn-submit,  {
   background-color: #1a77ff;
   color: #fff;
   font-size: 18px;
@@ -125,7 +125,7 @@ h1, h2, a {
 }
 
 .login .btn-submit {
-  margin: 15px 20px 60px 0px;
+  margin: 15px 20px 150px 0px;
 }
 
 .index .btn-submit {
@@ -337,5 +337,39 @@ th {
   float: right;
 }
 
+
+select, #match_player1_goals, #match_player2_goals {
+  margin: 0;
+  border: 1px solid transparent;
+  outline: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: white;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+
+}
+select:focus, #match_player1_goals:focus, #match_player2_goals:focus {
+  outline:none;
+  box-shadow: 0 0 1px 3px rgba(180,222,250, 1);
+  color: #222;
+  background-color: #fff;
+}
+
+.col-md-6 {
+  float:left;
+}
+
+#player_role {
+  box-shadow: none;
+  width: 34px;
+}
 
 

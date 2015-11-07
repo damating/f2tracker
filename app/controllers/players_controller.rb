@@ -19,22 +19,22 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
     if params[:commit] == 'Sign up'
         if @player.save
-          redirect_to '/'
+          redirect_to root_path
         else
           redirect_to signup_path
         end
     elsif params[:commit] == 'Create player'
          if @player.save
-          redirect_to '/players'
+          redirect_to players_path
         else
-          redirect_to '/new'
+          redirect_to new_player_path
         end
     end
   end
 
   def destroy
     Player.find(params[:id]).destroy
-    redirect_to '/players'
+    redirect_to players_path
   end
 
   def edit
@@ -44,9 +44,9 @@ class PlayersController < ApplicationController
   def update
     @player = Player.find(params[:id])
     if @player.update_attributes(player_params)
-      redirect_to '/players'
+      redirect_to players_path
     else
-      render 'edit'
+      render edit_player_path
     end
   end
 
@@ -74,7 +74,7 @@ class PlayersController < ApplicationController
 
   private
   def player_params
-    params.require(:player).permit(:first_name, :last_name, :email, :password, :avatar, :role, :wins, :losts, :points, :goals, :badge_id)
+    params.require(:player).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar, :role, :wins, :losts, :points, :goals, :badge_id)
   end
 
 end

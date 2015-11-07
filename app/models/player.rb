@@ -1,30 +1,35 @@
 class Player < ActiveRecord::Base
 
 
-  has_many :matches#, dependent: :destroy
+  has_many :matches
   belongs_to :badge
-  before_save :set_player
+  before_create :set_player
 
-  #validates_presence_of :first_name, :last_name, :email
-
-
-
-  validates :first_name, presence: true, length: { maximum: 20 }, format: { with: /\A[a-zA-Z0-9_\-]+\z/,
-                                                                            message: "Must be formatted correctly" }
-  validates :last_name,  presence: true, length: { maximum: 30 }, format: { with: /\A[a-zA-Z0-9_\-]+\z/,
-                                                                            message: "Must be formatted correctly" }
+  validates :first_name, presence: true, length: {maximum: 20}, format: {with: /\A[a-zA-Z0-9_\-]+\z/,
+                                                                         message: "Must be formatted correctly"}
+  validates :last_name, presence: true, length: {maximum: 30}, format: {with: /\A[a-zA-Z0-9_\-]+\z/,
+                                                                        message: "Must be formatted correctly"}
 
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
-		    format: { with: VALID_EMAIL_REGEX },
-		    uniqueness: { case_sensitive: false }
+  #VALID_EMAIL_REGEX = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+  validates :email, presence: true, length: {maximum: 255},
+            format: {with: VALID_EMAIL_REGEX},
+            uniqueness: {case_sensitive: false}
 
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 } #, on: create
+
+  validates :password, :presence => true,
+            :confirmation => true,
+            :length => {minimum: 6},
+            :on => :create
+  validates :password, :confirmation => true,
+            :length => {minimum: 6},
+            :allow_blank => true,
+            :on => :update
 
   has_attached_file :avatar
-  #validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
+  validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
 
   def set_player
     self.email = email.downcase
@@ -33,6 +38,7 @@ class Player < ActiveRecord::Base
     self.points = 0
     self.goals = 0
     self.badge_id = 6
+    self.role = 'player'
   end
 
   def admin?
@@ -40,7 +46,7 @@ class Player < ActiveRecord::Base
   end
 
   def get_full_name
-	"#{first_name} #{last_name}"
+    "#{first_name} #{last_name}"
   end
 
   def matches

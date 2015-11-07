@@ -5,29 +5,47 @@
         <%= f.label :title %><br>
         <%= f.text_field :title, class: 'form-control' %>
       </div>
-      <div class="form-group">
-        <%= f.label :date %><br>
-        <%= f.date_select :date, class: 'form-control' %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :date %><br>
+            <%= f.date_select :date, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :startTime, "Start time" %><br>
+            <%= f.time_select :startTime, class: 'form-control', class: 'form-control' %>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <%= f.label :startTime %><br>
-        <%= f.time_select :startTime, class: 'form-control', class: 'form-control' %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :player1_id %><br>
+            <%= collection_select(:match, :player1_id, Player.all, :id, :get_full_name) %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :player2_id %><br>
+            <%= collection_select(:match, :player2_id, Player.all, :id, :get_full_name) %>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <%= f.label :player1_id %><br>
-        <%= collection_select(:match, :player1_id, Player.all, :id, :get_full_name) %>
-      </div>
-      <div class="form-group">
-        <%= f.label :player2_id %><br>
-        <%= collection_select(:match, :player2_id, Player.all, :id, :get_full_name) %>
-      </div>
-      <div class="form-group">
-        <%= f.label :player1_goals %><br>
-        <%= f.number_field(:player1_goals, in: 0..10) %>
-      </div>
-      <div class="form-group">
-        <%= f.label :player2_goals %><br>
-        <%= f.number_field(:player2_goals, in: 0..10) %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :player1_goals %><br>
+            <%= f.number_field(:player1_goals, in: 0..10) %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :player2_goals %><br>
+            <%= f.number_field(:player2_goals, in: 0..10) %>
+          </div>
+        </div>
       </div>
 
       <%= f.submit button_label, class: "btn-submit" %>
@@ -88,7 +106,7 @@
             $("#match_player2_goals").val(10);
             $("#match_player2_goals").attr('max', 10);
         }
-        else if($("#match_player1_goals").val() == 10) {
+        else if ($("#match_player1_goals").val() == 10) {
             $("#match_player2_goals").attr('max', 9);
         }
     });
@@ -98,7 +116,7 @@
             $("#match_player1_goals").val(10);
             $("#match_player1_goals").attr('max', 10);
         }
-        else if($("#match_player2_goals").val() == 10)  {
+        else if ($("#match_player2_goals").val() == 10) {
             $("#match_player1_goals").attr('max', 9);
         }
     });

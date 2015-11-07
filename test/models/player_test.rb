@@ -66,10 +66,10 @@ class PlayerTest < ActiveSupport::TestCase
     assert_not duplicate_player.valid?
   end
 
-  test "password can be blank" do
-    @player.password = @player.password_confirmation = " " * 6
-    assert @player.valid?
-  end
+  # test "password can be blank" do
+  #   @player.password = @player.password_confirmation = " " * 6
+  #   assert @player.valid?
+  # end
 
   test "email should be saved as lower-case" do
     mixed_case_email = "BoB@EmaIL.CoM"
