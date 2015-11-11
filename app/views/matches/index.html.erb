@@ -2,6 +2,7 @@
   <div class="container">
 
     <h1>Last matches</h1>
+
     <div class="box">
       <div class="table-responsive">
         <table class="table">
@@ -24,41 +25,40 @@
 
           <tbody>
           <% @matches.each do |match| %>
-          <tr>
+              <tr>
+                <td><%= match.title %></td>
 
-            <td><%= match.title %></td>
+                <% if Player.exists?(match.player1_id) %>
+                    <td><%= gravatar_for Player.find(match.player1_id), size: "80" %></td>
+                    <td><%= Player.find(match.player1_id).get_full_name %></td>
+                <% else %>
+                    <td><%= image_tag 'deleted_user.png', size: "80" %></td>
+                    <td>Player deleted</td>
+                <% end %>
+                <td><%= match.player1_goals %> : <%= match.player2_goals %></td>
+                <% if Player.exists?(match.player2_id) %>
+                    <td><%= Player.find(match.player2_id).get_full_name %></td>
+                    <td><%= gravatar_for Player.find(match.player2_id), size: "80" %></td>
+                <% else %>
+                    <td>Gracz usunięty</td>
+                <% end %>
 
-            <% if Player.exists?(match.player1_id) %>
-                <td><%= gravatar_for Player.find(match.player1_id), size: "80"   %></td>
-                <td><%= Player.find(match.player1_id).get_full_name %></td>
-            <% else %>
-                <td><%= image_tag 'deleted_user.png', size: "80" %></td>
-                <td>Player deleted</td>
-            <% end %>
-            <td><%= match.player1_goals %> : <%= match.player2_goals %></td>
-            <% if Player.exists?(match.player2_id) %>
-                <td><%= Player.find(match.player2_id).get_full_name %></td>
-                <td><%= gravatar_for Player.find(match.player2_id), size: "80" %></td>
-            <% else %>
-                <td>Gracz usunięty</td>
-            <% end %>
-
-            <td><%= match.date %></td>
-            <td><%= match.startTime.strftime("%H : %M") %></td>
+                <td><%= match.date %></td>
+                <td><%= match.startTime.strftime("%H : %M") %></td>
                 <% if current_player && current_player.admin? %>
                     <td class="icon"><%= link_to "", match, method: :delete,
-                                                 data: { confirm: "Are you sure?" }, class: "delete" %></td>
+                                                 data: {confirm: "Are you sure?"}, class: "delete" %></td>
                     <td class="icon"><%= link_to "", edit_match_path(match), class: "edit" %></td>
                 <% end %>
-            <% end %>
+          <% end %>
           </tr>
           </tbody>
         </table>
       </div>
 
-    <% if current_player && current_player.admin? %>
-        <%= link_to 'New Match', new_match_path, class: "btn-submit"  %>
-    <% end %>
+      <% if current_player && current_player.admin? %>
+          <%= link_to 'New Match', new_match_path, class: "btn-submit" %>
+      <% end %>
+    </div>
   </div>
-</div>
 </div>

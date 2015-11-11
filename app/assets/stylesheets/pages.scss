@@ -2,21 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html,body {
+html, body {
   background: #f2f2f2;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
-  margin:0;
-  padding:0;
-  height:100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 .wrapper {
   min-height: 100%;
   position: relative;
 }
+
 h1, h2, a {
-  font-family: 'Oswald', sans-serif; text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
 }
 
 .container {
@@ -56,9 +58,8 @@ h1, h2, a {
 .menu ul.nav li .ddown {
   padding: 10px 33px 10px 33px;
   text-align: center;
-  width:100%;
+  width: 100%;
 }
-
 
 .menu ul.nav li:hover, .menu ul.nav li.active, .menu ul.nav li.dropdown {
   background: #1a77ff;
@@ -100,8 +101,7 @@ h1, h2, a {
 
 /* Buttons */
 
-
-.main .btn, .login .btn-submit, .index .btn-submit,  {
+.main .btn, .login .btn-submit, .index .btn-submit, {
   background-color: #1a77ff;
   color: #fff;
   font-size: 18px;
@@ -119,7 +119,7 @@ h1, h2, a {
 
 .btn-submit {
   border: none;
-  font-family: "Oswald",sans-serif;
+  font-family: "Oswald", sans-serif;
   text-transform: uppercase;
   float: left;
 }
@@ -159,15 +159,13 @@ h1, h2, a {
 
 /* Footer */
 .footer {
-  position:absolute;
-  bottom:0;
-  width:100%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background: #000 none repeat scroll 0% 0%;
   padding: 30px 0px;
   //margin: 0px;
 }
-
-
 
 .footer ul {
   float: left;
@@ -189,12 +187,12 @@ h1, h2, a {
 
 /* Login */
 form input.form-control {
-    border: 0px none;
-    border-radius: 0px;
+  border: 0px none;
+  border-radius: 0px;
 }
 
 input[type="file"] {
-    display: block;
+  display: block;
 }
 
 .login h1, .index h1, .statistics h1 {
@@ -210,37 +208,23 @@ input[type="file"] {
 .table-responsive {
   margin-bottom: 150px;
 }
+
 th, td {
   padding: 12px 25px;
   text-align: center;
   font-size: 14px;
 }
 
-
 th {
-  font-family: 'Oswald', sans-serif; text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
   color: #1A77FF;
 }
 
-//.index th, .show .row th{
-  //border-bottom: 7px solid #1A77FF;
-  //font-family: 'Oswald', sans-serif; text-transform: uppercase;
-//}
-
-//.index td {
-  //background: #fff none repeat scroll 0% 0%;
-//}
-
-//.index th {
-  //color: #fff;
-  //font-family: 'Oswald', sans-serif; text-transform: uppercase;
-  //background: #152230 none repeat scroll 0% 0%;
-//}
-
 .show .row th {
-  font-family: 'Oswald', sans-serif; text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
 }
-
 
 .index .box, .index tr {
   margin-bottom: 25px;
@@ -255,16 +239,16 @@ th {
 .box .icon {
   padding: 12px 0px;
 }
- 
+
 .edit {
   background-image: url("edit45.png");
   background-position: center center;
-} 
+}
 
 .delete {
   background-image: url("symbol5.png");
   background-position: center center;
-} 
+}
 
 /* Show */
 
@@ -273,13 +257,13 @@ th {
   background: #FFF none repeat scroll 0% 0%;
 }
 
-
 .show .row .col-md-4 {
   background: #152230 none repeat scroll 0% 0%;
   padding: 20px 40px 40px;
   color: #fff;
 
 }
+
 .show .row .col-md-9 {
   padding: 20px 40px 40px;
   height: 400px;
@@ -287,7 +271,7 @@ th {
 }
 
 .show .row .col-md-3 {
-  background: #f2f2f2 ;
+  background: #f2f2f2;
 }
 
 .show img {
@@ -307,8 +291,9 @@ th {
 }
 
 .show .row ul li {
-  list-style-type:none;
-  font-family: 'Oswald', sans-serif; text-transform: uppercase;
+  list-style-type: none;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -323,6 +308,7 @@ th {
   background-repeat: no-repeat;
   background-position: right center;
 }
+
 .table th .asc {
   background-image: url("up_arrow1.png");
 }
@@ -337,8 +323,7 @@ th {
   float: right;
 }
 
-
-select, #match_player1_goals, #match_player2_goals {
+select, #match_player1_goals, #match_player2_goals, #search {
   margin: 0;
   border: 1px solid transparent;
   outline: none;
@@ -356,20 +341,34 @@ select, #match_player1_goals, #match_player2_goals {
   background-color: #fff;
 
 }
+
 select:focus, #match_player1_goals:focus, #match_player2_goals:focus {
-  outline:none;
-  box-shadow: 0 0 1px 3px rgba(180,222,250, 1);
+  outline: none;
+  box-shadow: 0 0 1px 3px rgba(180, 222, 250, 1);
   color: #222;
   background-color: #fff;
 }
 
 .col-md-6 {
-  float:left;
+  float: left;
 }
 
 #player_role {
   box-shadow: none;
   width: 34px;
+}
+
+#search {
+  margin: 0 0 30px
+}
+
+#search-button {
+  margin: 0 0 0 0;
+  font-size: 15px;
+  height: 34px;
+  padding: 6px 12px;
+  text-decoration: none;
+  border-radius: 0px;
 }
 
 

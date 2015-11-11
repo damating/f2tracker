@@ -4,7 +4,9 @@ class PlayersController < ApplicationController
   before_action :require_player, only: [:edit, :show]
 
   def index
-    @players = Player.all.reverse
+    # @players = Player.all.reverse
+
+    @players = Player.search(params[:search])
   end
 
   def signup
@@ -18,23 +20,30 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     if params[:commit] == 'Sign up'
-        if @player.save
-          redirect_to root_path
-        else
-          redirect_to signup_path
-        end
+      if @player.save
+        redirect_to root_path
+      else
+        redirect_to signup_path
+      end
     elsif params[:commit] == 'Create player'
-         if @player.save
-          redirect_to players_path
-        else
-          redirect_to new_player_path
-        end
+      if @player.save
+        redirect_to :action => :index
+      else
+        redirect_to new_player_path
+      end
     end
   end
 
   def destroy
-    Player.find(params[:id]).destroy
-    redirect_to players_path
+    if current_player == Player.find(params[:id])
+      session[:player_id] = nil
+      Player.find(params[:id]).destroy
+      redirect_to root_path
+    else
+      Player.find(params[:id]).destroy
+      redirect_to players_path
+    end
+
   end
 
   def edit
@@ -53,7 +62,7 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     if @player.nil?
-      redirect_to :action => "index" and return
+      redirect_to :action => :index and return
     end
   end
 

@@ -6,11 +6,9 @@
 <div class="menu">
   <div class="container">
     <ul class="nav">
-
-
       <% if current_player %>
-
-          <li class="dropdown"><a class="dropdown-toggle active" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
+          <li class="dropdown">
+            <a class="dropdown-toggle active" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
             <ul class="nav dropdown-menu">
               <li class="ddown"><%= link_to "Profile", current_player %></li>
               <li class="ddown"><%= link_to "Settings", edit_player_path(current_player) %></li>
@@ -22,7 +20,7 @@
       <% else %>
           <li class="active"><%= link_to "Log in", login_path %></a></li>
       <% end %>
-      <li><%=  link_to "Statistics", statistics_path %></li>
+      <li><%= link_to "Statistics", statistics_path %></li>
       <li><%= link_to "Welcome", root_path %></li>
     </ul>
   </div>

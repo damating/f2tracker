@@ -42,7 +42,7 @@ class PlayerTest < ActiveSupport::TestCase
   end
 
   test "email validation should accept valid addresses" do
-    valid_addresses = %w[player@email.com PLAYER@foo.COM A_PLAY-ER@foo.bar.org
+    valid_addresses = %w[example@email.com EXAMPLE@foo.COM A_PLAY-ER@foo.bar.org
                          first.last@foo.jp alice+bob@baz.cn]
     valid_addresses.each do |valid_address|
       @player.email = valid_address
@@ -66,21 +66,16 @@ class PlayerTest < ActiveSupport::TestCase
     assert_not duplicate_player.valid?
   end
 
-  # test "password can be blank" do
-  #   @player.password = @player.password_confirmation = " " * 6
-  #   assert @player.valid?
-  # end
+  test "password can be blank" do
+    @player.password = @player.password_confirmation = "" " * 6"
+    assert @player.valid?
+  end
 
   test "email should be saved as lower-case" do
     mixed_case_email = "BoB@EmaIL.CoM"
     @player.email = mixed_case_email
     @player.save
     assert_equal mixed_case_email.downcase, @player.reload.email
-  end
-
-  test "password should have a minimum length" do
-    @player.password = @player.password_confirmation = "a" * 5
-    assert_not @player.valid?
   end
 
 

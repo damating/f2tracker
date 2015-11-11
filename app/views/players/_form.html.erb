@@ -1,47 +1,49 @@
 <%= form_for @player, validate: true do |f| %>
 
-      <form role="form">
-        <div class="form-group">
-          <%= f.label :first_name %><br>
-          <%= f.text_field :first_name, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :last_name %><br>
-          <%= f.text_field :last_name, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :email %><br>
-          <%= f.email_field :email, class: 'form-control'%>
-        </div>
-        <div class="form-group">
-          <%= f.label :password %><br>
-          <%= f.password_field :password, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password_confirmation %><br>
-          <%= f.password_field :password_confirmation, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :avatar %>
-          <%= f.file_field :avatar, class: 'form-control', size: "80" %>
-        </div>
+    <form role="form">
+      <div class="form-group">
+        <%= f.label :first_name %><br>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %><br>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %><br>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation %><br>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar, class: 'form-control', size: "80" %>
+      </div>
 
-        <% if current_page?(:controller => 'players', :action => 'signup') %>
-            <%= f.submit "Sign up", class: "btn-submit" %>
-            <%= link_to 'Back', root_path, class: "btn-submit" %>
-        <% else %>
-          <div class="form-group">
-            <%= f.label :role, "Admin" %>
-            <%= f.check_box :role, { class: 'form-control' }, "admin", "player" %>
-          </div>
-            <%= f.submit button_label, class: "btn-submit" %>
-            <%= link_to 'Back', players_path, class: "btn-submit" %>
-        <% end %>
-      </form>
+      <% if current_page?(:controller => 'players', :action => 'signup') %>
+          <%= f.submit "Sign up", class: "btn-submit" %>
+          <%= link_to 'Back', root_path, class: "btn-submit" %>
+      <% else %>
+          <% if current_player && current_player.admin? %>
+              <div class="form-group">
+                <%= f.label :role, "Admin" %>
+                <%= f.check_box :role, {class: 'form-control'}, "admin", "player" %>
+              </div>
+          <% end %>
+          <%= f.submit button_label, class: "btn-submit" %>
+          <%= link_to 'Back', players_path, class: "btn-submit" %>
+      <% end %>
+    </form>
 <% end %>
 
 <script>
-$(":checkbox").change(function(e){
-    $(this).val( $(":checked").length > 0 ? "admin" : "player");
-})
+    $(":checkbox").change(function (e) {
+        $(this).val($(":checked").length > 0 ? "admin" : "player");
+    })
 </script>

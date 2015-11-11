@@ -12,21 +12,12 @@ class Player < ActiveRecord::Base
 
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  #VALID_EMAIL_REGEX = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
   validates :email, presence: true, length: {maximum: 255},
             format: {with: VALID_EMAIL_REGEX},
             uniqueness: {case_sensitive: false}
 
   has_secure_password
-
-  validates :password, :presence => true,
-            :confirmation => true,
-            :length => {minimum: 6},
-            :on => :create
-  validates :password, :confirmation => true,
-            :length => {minimum: 6},
-            :allow_blank => true,
-            :on => :update
+  validates :password, presence: true, confirmation: true, length: {minimum: 6}, on: create
 
   has_attached_file :avatar
   validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
@@ -38,7 +29,13 @@ class Player < ActiveRecord::Base
     self.points = 0
     self.goals = 0
     self.badge_id = 6
-    self.role = 'player'
+    # self.role = 'player'
+  end
+
+  def Player.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+        BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
   end
 
   def admin?
@@ -47,6 +44,21 @@ class Player < ActiveRecord::Base
 
   def get_full_name
     "#{first_name} #{last_name}"
+  end
+
+  def self.search(search)
+    if search
+      search.downcase!
+      if search == 'admin' || search == 'player'
+        where('LOWER(role) LIKE ?', "%#{search}%")
+      elsif search.include?('@')
+        where('LOWER(email) LIKE ?', "%#{search}%")
+      else
+        where('LOWER(last_name) LIKE ?', "%#{search}%")
+      end
+    else
+      all.reverse
+    end
   end
 
   def matches

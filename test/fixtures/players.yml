@@ -4,8 +4,16 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
+player:
+  first_name: Player
+  last_name: Player
+  email: player@email.com
+  password_digest: <%= Player.digest('Player123') %>
+  role: player
+  wins: 0
+  losts: 0
+  points: 0
+  badge_id: 1
+
 two: {}
 #  column: value

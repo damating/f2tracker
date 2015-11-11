@@ -19,8 +19,8 @@ class MatchesController < ApplicationController
       @player1_losts = players_losts_matches(@match.player1_id)
       @player2_losts = players_losts_matches(@match.player2_id)
 
-      @player1_points = players_points(@player1_wins,@player1_losts)
-      @player2_points = players_points(@player2_wins,@player2_losts)
+      @player1_points = players_points(@player1_wins, @player1_losts)
+      @player2_points = players_points(@player2_wins, @player2_losts)
 
       @player1_goals = players_goals(@match.player1_id)
       @player2_goals = players_goals(@match.player2_id)
@@ -48,8 +48,8 @@ class MatchesController < ApplicationController
     @player1_losts = players_losts_matches(@match.player1_id)
     @player2_losts = players_losts_matches(@match.player2_id)
 
-    @player1_points = players_points(@player1_wins,@player1_losts)
-    @player2_points = players_points(@player2_wins,@player2_losts)
+    @player1_points = players_points(@player1_wins, @player1_losts)
+    @player2_points = players_points(@player2_wins, @player2_losts)
 
     @player1_goals = players_goals(@match.player1_id)
     @player2_goals = players_goals(@match.player2_id)
@@ -79,8 +79,8 @@ class MatchesController < ApplicationController
       @player1_losts = players_losts_matches(@match.player1_id)
       @player2_losts = players_losts_matches(@match.player2_id)
 
-      @player1_points = players_points(@player1_wins,@player1_losts)
-      @player2_points = players_points(@player2_wins,@player2_losts)
+      @player1_points = players_points(@player1_wins, @player1_losts)
+      @player2_points = players_points(@player2_wins, @player2_losts)
 
       @player1_goals = players_goals(@match.player1_id)
       @player2_goals = players_goals(@match.player2_id)
@@ -102,7 +102,7 @@ class MatchesController < ApplicationController
 
   def match_params
     params.require(:match).permit(:title, :date, :startTime, :player1_id, :player2_id,
- :player1_goals, :player2_goals)
+                                  :player1_goals, :player2_goals)
   end
 end
 
@@ -114,7 +114,7 @@ def players_losts_matches(player_id)
   Match.get_lost_matches(player_id).count
 end
 
-def players_points(wins,losts)
+def players_points(wins, losts)
   wins * 3 - losts
 end
 
@@ -131,7 +131,7 @@ def update_player(player_id, player_wins, player_losts, player_points, player_go
 end
 
 def update_player_medal(player_id, player_medal)
-  Player.where(:id => player_id).update_all( badge_id: player_medal)
+  Player.where(:id => player_id).update_all(badge_id: player_medal)
 end
 
 def players_medal(player_id)

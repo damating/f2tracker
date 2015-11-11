@@ -7,8 +7,8 @@ class Match < ActiveRecord::Base
 
   validates_numericality_of :player1_goals, :only_integer => true
   validates_numericality_of :player2_goals, :only_integer => true
-  validates :player1_goals, inclusion: { in: 0..10 }
-  validates :player2_goals, inclusion: { in: 0..10 }
+  validates :player1_goals, inclusion: {in: 0..10}
+  validates :player2_goals, inclusion: {in: 0..10}
 
   protected
   def set_winner
@@ -28,7 +28,7 @@ class Match < ActiveRecord::Base
   end
 
   def self.get_won_matches(player_id)
-   get_matches_by_person(player_id).where("winner = ?", player_id)
+    get_matches_by_person(player_id).where("winner = ?", player_id)
   end
 
   def self.get_lost_matches(player_id)
@@ -36,7 +36,7 @@ class Match < ActiveRecord::Base
   end
 
   def self.goals_number(player_id)
-    where("player1_id = ?",player_id).collect { |i| i.player1_goals}.sum + where("player2_id = ?",player_id).collect { |i| i.player2_goals}.sum
+    where("player1_id = ?", player_id).collect { |i| i.player1_goals }.sum + where("player2_id = ?", player_id).collect { |i| i.player2_goals }.sum
   end
 
   def self.match_result
@@ -46,5 +46,5 @@ class Match < ActiveRecord::Base
   def self.get_opponents
     "#{player1_goals} : #{player2_goals}"
   end
-  
+
 end

@@ -6,36 +6,45 @@
         <%= gravatar_for @player, size: "120" %>
 
         <div>
-            <h1><%= @player.get_full_name %></h1>
-            <span><%= image_tag Badge.find(@player.badge_id).icon %></span>
+          <h1><%= @player.get_full_name %></h1>
+          <span><%= image_tag Badge.find(@player.badge_id).icon %></span>
         </div>
         <div class="table-responsive">
-  	    <table class="table">
-	        <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Title</th>
-                  <th>Player</th>
-                  <th>Result</th>
-                  <th>Opponent</th>
-                </tr>
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Date</th>
+              <th>Title</th>
+              <th>Player</th>
+              <th>Result</th>
+              <th>Opponent</th>
+            </tr>
             </thead>
             <tbody>
             <%= @player.matches.find_each do |match| %>
                 <tr>
                   <td><%= match.date %></td>
                   <td><%= match.title %></td>
-
-                  <% if @player.id == Player.find(match.player1_id).id %>
-                      <td><%= @player.get_full_name %></td>
-                      <td><%= match.player1_goals %> : <%= match.player2_goals %></td>
-                      <td><%=  Player.find(match.player2_id).get_full_name %></td>
+                  <% if Player.exists?(match.player1_id) %>
+                      <% if @player.id == Player.find(match.player1_id).id %>
+                          <td><%= @player.get_full_name %></td>
+                          <% if Player.exists?(match.player2_id) %>
+                              <td><%= match.player1_goals %> : <%= match.player2_goals %></td>
+                              <td><%= Player.find(match.player2_id).get_full_name %></td>
+                          <% else %>
+                              <td><%= match.player1_goals %> : <%= match.player2_goals %></td>
+                              <td>Player deleted</td>
+                          <% end %>
+                      <% else %>
+                          <td><%= @player.get_full_name %></td>
+                          <td><%= match.player2_goals %> : <%= match.player1_goals %></td>
+                          <td><%= Player.find(match.player1_id).get_full_name %></td>
+                      <% end %>
                   <% else %>
                       <td><%= @player.get_full_name %></td>
                       <td><%= match.player2_goals %> : <%= match.player1_goals %></td>
-                      <td><%=  Player.find(match.player1_id).get_full_name %></td>
-                  <%end%>
-
+                      <td>Player deleted</td>
+                  <% end %>
                 </tr>
             <% end %>
             </tbody>
@@ -43,7 +52,7 @@
         </div>
         <br>
       </div>
-      
+
       <div class="col-md-3">
         <ul>
           <li>
