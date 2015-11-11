@@ -28,7 +28,7 @@ class Player < ActiveRecord::Base
     self.losts = 0
     self.points = 0
     self.goals = 0
-    self.badge_id = 6
+    self.badge_id = 1
     # self.role = 'player'
   end
 
