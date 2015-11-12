@@ -50,7 +50,7 @@
         }
         else {
             $("#message_password").remove();
-            if ($("#session_password").length < 6) {
+            if ($("#session_password").val().length < 6) {
                 $("#passDiv").append('<label class="message" id="message_password">is too short</label>');
             }
             else {
