@@ -11,22 +11,20 @@ Before running the application, you need to install:
 * Rails (version 4.2)
 
 Check that appropriate versions of Ruby and Rails are installed in your development environment:
+
 $ ruby -v
 $ rails -v
 
 
 == What’s Here
 
-This example application, f2tracker is online foosball tracker. The application manages access for users
- in two roles: admin and player.
+This example application, f2tracker is online foosball tracker. The application manages access for users in two roles: admin and player.
 
-Player may visit statistics page where he can track his opponents statistics and sort the list of players
- according to some criteions.
+Player may visit statistics page where he can track his opponents statistics and sort the list of players according to some criteions.
 
 Player is able to sign up to the application and after logging in:
-
-    * has his own profile where he can check his avatar, achievements like number of matches won and lost,
-average number of points, a badge he gained etc. He is also able to edit his profile.
+    * has his own profile where he can check his avatar, achievements like number of matches won and lost, average number of points, a badge he gained etc.
+      He is also able to edit his profile.
     * may visit players page where is the list of players with their achievements. There is also a search
     option by surname, email and role.
     * may visit matches page where he can observe matches between players and a result each of them.
@@ -34,8 +32,6 @@ average number of points, a badge he gained etc. He is also able to edit his pro
 Admin has extra options. He is able to:
     * add, edit and delete players
     * add, edit and delete matches
-
-
 
 == Database
 
