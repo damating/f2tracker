@@ -1,8 +1,10 @@
-# f2tracker
+# F2tracker
+
+### Version
 
 Rails version: 4.2.1
 
-== Dependencies
+### Dependencies
 
 Before running application, you need to install:
 
@@ -11,28 +13,34 @@ Before running application, you need to install:
 
 Check that appropriate versions of Ruby and Rails are installed in you development environment:
 
+```sh
 $ ruby -v
 $ rails -v
+```
 
-== Database
+### Database
 
 The application requires a database. The example application uses SQLite with Rails ActiveRecord. You can
 easily substitute for example PostgreSQL.
 
 Create databases and run:
 
+```sh
 $ rake db:create
 $ rake db:schema:load
+```
 
-== Database Seed File
+### Database Seed File
 
 The db/seeds.rb file initializes the database with default values.
 
+```sh
 $ rake db:seeds
+```
 
 You can use it to log in to the application.
 
-== What's here
+### What's here
 
 This example application, F2tracker in online foosball tracker. The application manages access for users in two roles: admin and player.
 
@@ -48,5 +56,5 @@ Admin has extra options. He is able to:
 * add, edit and delete players
 * add, edit and delete matches
 
-Feel free to use the F2tracker.
+Feel free to use the F2tracker!
 
