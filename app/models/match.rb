@@ -36,7 +36,7 @@ class Match < ActiveRecord::Base
   end
 
   def self.goals_number(player_id)
-    where("player1_id = ?", player_id).collect { |i| i.player1_goals }.sum + where("player2_id = ?", player_id).collect { |i| i.player2_goals }.sum
+    where("player1_id = ?", player_id).collect{ |i| i.player1_goals }.sum + where("player2_id = ?", player_id).collect { |i| i.player2_goals }.sum
   end
 
   def self.match_result

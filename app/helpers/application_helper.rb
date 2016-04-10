@@ -24,4 +24,5 @@ module ApplicationHelper
   def require_admin
     redirect_to '/' unless current_player.admin?
   end
+
 end

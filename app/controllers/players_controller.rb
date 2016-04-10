@@ -4,8 +4,6 @@ class PlayersController < ApplicationController
   before_action :require_player, only: [:edit, :show]
 
   def index
-    # @players = Player.all.reverse
-
     @players = Player.search(params[:search])
   end
 
@@ -43,7 +41,6 @@ class PlayersController < ApplicationController
       Player.find(params[:id]).destroy
       redirect_to players_path
     end
-
   end
 
   def edit
@@ -87,3 +84,4 @@ class PlayersController < ApplicationController
   end
 
 end
+
